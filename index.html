@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet"
+             integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp"
+             crossorigin="anonymous">
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <div class="container-fluid d-flex flex-wrap align-items-center justify-content-around py-3 mb-2">
+            <a href="#" class="d-flex align-items-center col-md-3 mb-2 mb-md-0 text-decoration-none">
+                <img class=" float-start logo" height="60px" src="./img/logo.png" alt="logo">
+                <h3 class="text-primary header__logo-title">MedClinic</h3>
+            </a>
+            <div class="col-md-3 d-flex justify-content-end">
+                <button type="button" class="header__btn-login btn btn-primary login__btn d-none" data-bs-toogle="modal" data-bs-target="#sign-in">Login</button>
+                <button type="button" class="header__btn-create-visit btn btn-light text-primary border border-primary me-3 d-block" data-bs-toggle="modal" data-bs-target="#create-visit">Create visit</button>
+                <button type="button" class="header__btn-logout btn btn-primary d-block" data-bs-toogle="modal" data-bs-target="#sign-out">Log Out</button>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navbar -->
+        <nav class="navbar navbar-expand-lg bg-primary">
+            <div class="container-fluid">
+                <form class="navbar__form d-flex flex-wrap justify-content-center align-items-end collapse navbar-collapse text-primary">
+                    <div class="me-5">
+                        <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+                    </div>
+                    <div class="me-5">
+                        <label for="selectStatus" class="mr-2"></label>
+                        <select class="form-control form-select" aria-label="Default select example" id="selectStatus">
+                            <option value="" selected>Choose Status</option>
+                            <option value="Open">Open</option>
+                            <option value="Done">Done</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label for="selectPriority" class="mr-2"></label>
+                        <select class="form-control form-select" aria-label="Default select example" id="selectPriority">
+                            <option value="" selected>Choose Priority</option>
+                            <option value="high">High</option>
+                            <option value="normal">Normal</option>
+                            <option value="low">Low</option>
+                        </select>
+                    </div>
+                  </form>
+            </div>
+        </nav>
+
+     <!-- Main -->
+    <main>
+        <div class="container-fluid main-bg">  
+            <h1 class="main__title">Welcome!</h1>
+            <h2>Please, Log in...</h2>
+            <h2>No items have been added</h2>
+        </div>
+    </main>
+
+  <!-- Modal Create visit-->
+  <div class="modal fade text-center modal-md" id="create-visit" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-scrollable">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3 class="modal-header__title fs-5" id="exampleModalLabel">Create visit</h3>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+            <form id="visit-form">
+                <div class="doctors_section">
+                    <select class="form-select mb-3 select-doctors" aria-label="Default select example" id="doctor"
+                        name="doctor" required>
+                        <option selected >Choose a doctor</option>
+                        <option value="cardiologist" id="cardiologist">Cardiologist</option>
+                        <option value="dentist" id="dentist">Dentist</option>
+                        <option value="therapist" id="therapist">Therapist</option>
+                    </select>
+                </div>
+                <div class="base-options">
+                    <input name="purpose" id="purpose" required type="text" class="form-control mb-3 title"
+                        placeholder="Purpose of visit" />
+                    <input name="discription" id="discription" required type="text" class="form-control mb-3 title"
+                        placeholder="Discription of visit" />        
+                    <div class="priority-select" id="priority-select">
+                        <select class="form-select mb-3 select-priority" aria-label="Default select example" id="priority"
+                        name="priority" required>
+                        <option selected >Priority</option>
+                        <option value="low" id="low">Low</option>
+                        <option value="normal" id="normal">Normal</option>
+                        <option value="high" id="high">High</option>
+                        </select>
+                    </div>
+                    <input name="name" id="name" required class="form-control mb-3" type="text" placeholder="Name & surname" />
+                </div>
+                <div class="cardiologist-options">
+                    <input class="form-control mb-3" type="text" placeholder="Pressure" name="pressure"
+                        id="pressure" />
+                    <input class="form-control mb-3" type="text" placeholder="Body mass index" name="bodyMassIndex"
+                        id="bodyMassIndex" />
+                    <input class="form-control mb-3" type="text" placeholder="Diseases of heart"
+                        name="heart" id="heart" />
+                    <input class="form-control mb-3" type="text" placeholder="Age" name="age" id="age" />
+                </div>
+                <div class="dentist-options">
+                    <input class="form-control mb-3" type="text" placeholder="Date of last visit" name="lastVisit"
+                        id="lastVisit" />
+                </div>
+                <button class="btn btn-lg btn-primary select-doctor-btn d-inline" name="submit-btn" id="submit-btn" type="submit">Submit</button>
+                <button class="btn btn-lg btn-primary ms-4 d-inline" name="btn-close" data-bs-dismiss="modal" aria-label="Close">Close</button>
+            </form>
+      </div>
+    </div>
+  </div>
+
+    <!-- Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.min.js"
+        integrity="sha384-heAjqF+bCxXpCWLa6Zhcp4fu20XoNIA98ecBC1YkdXhszjoejr5y9Q77hIrv8R9i" crossorigin="anonymous">
+    </script>
+
+</body>
+</html>
