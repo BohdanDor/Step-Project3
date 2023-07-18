@@ -60,8 +60,10 @@
             <div class="main__text-wrapper">
                 <h1 class="main__title">Welcome!</h1>
                 <h2 class="main__login-text">Please, Log in...</h2>
-            </div>      
+            </div>
             <h2 class="main__items-text d-none">No items have been added</h2>
+            <div class="main__cards-wrapper d-none"></div>
+
         </div>
     </main>
 
@@ -82,8 +84,8 @@
                             placeholder="Password" />
                         <button class="btn btn-lg btn-primary select-doctor-btn d-inline" name="submit-btn" data-bs-dismiss="modal"
                             type="submit">Submit</button>
-                        <button class="btn btn-lg btn-primary ms-4 d-inline" name="btn-close" data-bs-dismiss="modal"
-                            aria-label="Close">Close</button>
+                        <!-- <button class="btn btn-lg btn-primary ms-4 d-inline" name="btn-close" data-bs-dismiss="modal"
+                            aria-label="Close">Close</button> -->
                     </form>
                 </div>
             </div>
@@ -99,7 +101,7 @@
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
-                <form id="visit-form">
+                <form id="visit-form" name="visitForm">
                     <div class="doctors_section">
                         <select class="form-select mb-3 select-doctors" aria-label="Default select example" id="doctor"
                             name="doctor" required>
@@ -112,8 +114,8 @@
                     <div class="base-options">
                         <input name="purpose" id="purpose" required type="text" class="form-control mb-3 title"
                             placeholder="Purpose of visit" />
-                        <input name="discription" id="discription" required type="text" class="form-control mb-3 title"
-                            placeholder="Discription of visit" />        
+                        <input name="description" id="description" required type="text" class="form-control mb-3 title"
+                            placeholder="description of visit" />        
                         <div class="priority-select" id="priority-select">
                             <select class="form-select mb-3 select-priority" aria-label="Default select example" id="priority"
                             name="priority" required>
@@ -125,21 +127,25 @@
                         </div>
                         <input name="name" id="name" required class="form-control mb-3" type="text" placeholder="Name & surname" />
                     </div>
-                    <div class="cardiologist-options">
+                    <div class="cardiologist-options d-none">
                         <input class="form-control mb-3" type="text" placeholder="Pressure" name="pressure"
                             id="pressure" />
                         <input class="form-control mb-3" type="text" placeholder="Body mass index" name="bodyMassIndex"
                             id="bodyMassIndex" />
                         <input class="form-control mb-3" type="text" placeholder="Diseases of heart"
                             name="heart" id="heart" />
-                        <input class="form-control mb-3" type="text" placeholder="Age" name="age" id="age" />
                     </div>
-                    <div class="dentist-options">
+
+                    <div class="dentist-options d-none">
                         <input class="form-control mb-3" type="text" placeholder="Date of last visit" name="lastVisit"
                             id="lastVisit" />
                     </div>
+                    <div class="therapist-options d-none">
+                        <input class="form-control mb-3" type="text" placeholder="Age" name="age"/>
+                    </div>
+
                     <button class="btn btn-lg btn-primary select-doctor-btn d-inline" name="submit-btn" id="submit-btn" type="submit">Submit</button>
-                    <button class="btn btn-lg btn-primary ms-4 d-inline" name="btn-close" data-bs-dismiss="modal" aria-label="Close">Close</button>
+                    <!-- <button class="btn btn-lg btn-primary ms-4 d-inline" name="btn-close" data-bs-dismiss="modal" aria-label="Close">Close</button> -->
                 </form>
             </div>
         </div>
@@ -151,7 +157,9 @@
         integrity="sha384-heAjqF+bCxXpCWLa6Zhcp4fu20XoNIA98ecBC1YkdXhszjoejr5y9Q77hIrv8R9i" crossorigin="anonymous">
     </script>
 
-    <script src="./js/authorization.js"></script>
+    <!-- <script src="./js/authorization.js"></script> -->
+    <script type="module" src="./js/main.js"></script>
+
 
 </body>
 </html>
