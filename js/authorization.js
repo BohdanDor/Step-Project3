@@ -20,7 +20,7 @@ export async function getToken() {
 
         let token = await response.text();        
         localStorage.setItem('token', token);
-
+        
 
     } catch (err) {
         alert(err.message)
