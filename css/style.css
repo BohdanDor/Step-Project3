@@ -32,4 +32,12 @@ header button {
     display: grid;
     grid-template-columns: repeat(5, 1fr);
     gap: 1em;
+    padding: 2em;
 }
+
+.card-button {
+    position: absolute;
+    top: 0;
+    right: 0;
+}
+

@@ -1,17 +1,22 @@
 const visitForm = document.forms.visitForm;
 const doctor = visitForm.doctor;
 const form = document.forms.login;
+const editForm = document.forms.editForm;
+const editDoctor = editForm.doctor;
 
 import { getToken } from "./authorization.js";
 import { VisitCardiologist } from "./classes.js";
 import { VisitDentist } from "./classes.js";
 import { VisitTherapist } from "./classes.js";
+import { Visit } from "./classes.js";
 
+if (localStorage.getItem('token')) {
+    viewCards();
+} 
 
 // get token
 form.addEventListener('submit', (el) => {
     el.preventDefault(); 
-    getToken();
 
     const loginBtn = document.querySelector('.header__btn-login');
     const createBtn = document.querySelector('.header__btn-create-visit');
@@ -25,10 +30,13 @@ form.addEventListener('submit', (el) => {
     welcome.classList.add('d-none');
     cardsWrapper.classList.remove('d-none');
 
-    if (localStorage.getItem('token') !== null) {
-        viewCards();
-    } 
-    
+    async function login() {
+        await getToken();
+        await viewCards();
+    }
+
+    login();
+   
 })
 
 
@@ -62,6 +70,8 @@ doctor.addEventListener('change', () => {
             break;
     }    
 })
+
+
 
 
 // create card
@@ -120,14 +130,27 @@ async function viewCards() {
     let cards = await response.json(); 
     console.log(cards);
 
+    
+
+    const loginBtn = document.querySelector('.header__btn-login');
+    const createBtn = document.querySelector('.header__btn-create-visit');
+    const noitems = document.querySelector('.main__items-text');
+    const welcome = document.querySelector('.main__text-wrapper');
+    const cardsWrapper = document.querySelector('.main__cards-wrapper');
+
+    loginBtn.classList.add('d-none');
+    createBtn.classList.remove('d-none');
+    noitems.classList.remove('d-none');
+    welcome.classList.add('d-none');
+    cardsWrapper.classList.remove('d-none');
+
     if (cards.length) {
-        document.querySelector('.main__items-text').classList.add('d-none');
+        noitems.classList.add('d-none');
     }
 
-    const cardsWrapper = document.querySelector('.main__cards-wrapper');
     cardsWrapper.innerHTML = '';
 
-    
+
     cards.forEach(card => {	
 
         if (card.doctor === 'cardiologist') {
@@ -145,7 +168,14 @@ async function viewCards() {
             const cardElement = visitTherapist.render();
             cardElement.setAttribute('data-id', card.id);
             cardsWrapper.append(cardElement);
-        } 
+        } else {
+            const visit = new Visit(card.doctor, card.purpose, card.description, card.priority, card.name, card.id);
+            const cardElement = visit.render();
+            cardElement.setAttribute('data-id', card.id);
+            cardsWrapper.append(cardElement);
+        }
         	       
 	}); 
 }
+
+

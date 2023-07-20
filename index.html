@@ -145,10 +145,73 @@
                     </div>
 
                     <button class="btn btn-lg btn-primary select-doctor-btn d-inline" name="submit-btn" id="submit-btn" type="submit">Submit</button>
-                    <!-- <button class="btn btn-lg btn-primary ms-4 d-inline" name="btn-close" data-bs-dismiss="modal" aria-label="Close">Close</button> -->
+                    
                 </form>
             </div>
         </div>
+        </div>
+    </div>
+
+    <!-- Modal Edit visit-->
+    <div class="modal fade text-center modal-md" id="edit-visit" tabindex="-1" aria-labelledby="editModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h3 class="modal-header__title fs-5" id="editModalLabel">Edit visit</h3>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="edit-form" name="editForm">
+                        <div class="doctors_section">
+                            <select class="form-select mb-3 select-doctors" aria-label="Default select example"
+                                name="doctor" required>
+                                <option selected>Choose a doctor</option>
+                                <option value="cardiologist" >Cardiologist</option>
+                                <option value="dentist" >Dentist</option>
+                                <option value="therapist" >Therapist</option>
+                            </select>
+                        </div>
+                        <div class="base-options">
+                            <input name="purpose"  required type="text" class="form-control mb-3 title"
+                                placeholder="Purpose of visit" />
+                            <input name="description"  required type="text" class="form-control mb-3 title"
+                                placeholder="description of visit" />
+                            <div class="priority-select" >
+                                <select class="form-select mb-3 select-priority" aria-label="Default select example"
+                                     name="priority" required>
+                                    <option selected>Priority</option>
+                                    <option value="low" >Low</option>
+                                    <option value="normal" >Normal</option>
+                                    <option value="high" >High</option>
+                                </select>
+                            </div>
+                            <input name="name"  required class="form-control mb-3" type="text"
+                                placeholder="Name & surname" />
+                        </div>
+                        <div class="cardiologist-options d-none">
+                            <input class="form-control mb-3" type="text" placeholder="Pressure" name="pressure"
+                                 />
+                            <input class="form-control mb-3" type="text" placeholder="Body mass index" name="bodyMassIndex"
+                                 />
+                            <input class="form-control mb-3" type="text" placeholder="Diseases of heart" name="heart"
+                                 />
+                        </div>
+    
+                        <div class="dentist-options d-none">
+                            <input class="form-control mb-3" type="text" placeholder="Date of last visit" name="lastVisit"
+                                 />
+                        </div>
+                        <div class="therapist-options d-none">
+                            <input class="form-control mb-3" type="text" placeholder="Age" name="age" />
+                        </div>
+    
+                        <button class="btn btn-lg btn-primary select-doctor-btn d-inline" name="submit-btn" 
+                            type="submit">Submit</button>
+                        
+                    </form>
+                </div>
+            </div>
         </div>
     </div>
 

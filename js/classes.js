@@ -8,6 +8,27 @@ export class Visit {
         this.name = name;
         this.id = id;
     }
+
+    render() {
+		const cardElement = document.createElement('div');
+			cardElement.classList.add('card');
+			cardElement.innerHTML = `
+				<h3>Name: ${this.name}</h3>				
+				<p>Doctor: ${this.doctor}</p>
+				<p>Purpose of visit: ${this.purpose}</p>
+				<p>Description of visit: ${this.description}</p>
+				<p>Priority: ${this.priority}</p>
+                <p>ID: ${this.id}</p>
+                <button type="button" class="btn-close card-button" aria-label="Delete"></button>
+                <button type="button" class="btn btn-warning">Edit</button>
+			`;
+		const btnDelete = cardElement.querySelector('.card-button');
+		btnDelete.addEventListener('click', () => {
+			this.deleteCard();
+		});
+
+		return cardElement;
+    }
     
     async deleteCard() {
 		try {
@@ -27,7 +48,7 @@ export class Visit {
 		} catch (error) {
 			console.error('Error:', error);
 		}
-	}
+    }   
 }
 
 
@@ -53,13 +74,14 @@ export class VisitCardiologist extends Visit {
 				<p>Body mass index: ${this.bodyMassIndex}</p>
 				<p>Diseases of heart: ${this.heart}</p>
 				<p>Age: ${this.age}</p>
-                <p>ID: ${this.id}</p>
-				<button class="card-button">Delete</button>
+                <p>ID: ${this.id}</p>				
+                <button type="button" class="btn-close card-button" aria-label="Delete"></button>
+                <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#edit-visit" >Edit</button>
 			`;
-		const btnDelete = cardElement.querySelector('.card-button');
+		const btnDelete = cardElement.querySelector('.btn-close, .card-button');
 		btnDelete.addEventListener('click', () => {
 			this.deleteCard();
-		});
+        });
 
 		return cardElement;
     }
@@ -82,7 +104,8 @@ export class VisitDentist extends Visit {
 				<p>Priority: ${this.priority}</p>
 				<p>Last visit: ${this.lastVisit}</p>
                 <p>ID: ${this.id}</p>
-				<button class="card-button">Delete</button>
+                <button type="button" class="btn-close card-button" aria-label="Delete"></button>
+                <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#edit-visit">Edit</button>
 			`;
 		const btnDelete = cardElement.querySelector('.card-button');
 		btnDelete.addEventListener('click', () => {
@@ -110,7 +133,8 @@ export class VisitTherapist extends Visit {
 				<p>Priority: ${this.priority}</p>
 				<p>Age: ${this.age}</p>
                 <p>ID: ${this.id}</p>
-				<button class="card-button">Delete</button>
+                <button type="button" class="btn-close card-button" aria-label="Delete"></button>
+                <button type="button" class="btn btn-warning" data-bs-toggle="modal" data-bs-target="#edit-visit">Edit</button>
 			`;
 		const btnDelete = cardElement.querySelector('.card-button');
 		btnDelete.addEventListener('click', () => {
